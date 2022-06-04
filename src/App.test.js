@@ -34,12 +34,12 @@ test("initial conditions", () => {
 test("checkbox disables button on first click and enables on second click", () => {
   render(<App />);
 
-  const checkbox = screen.getByRole("checkbox");
-  const button = screen.getByRole("button");
+  const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
 
   fireEvent.click(checkbox);
-  expect(button).toBeDisabled();
+  expect(colorButton).toBeDisabled();
 
   fireEvent.click(checkbox);
-  expect(button).toBeEnabled();
+  expect(colorButton).toBeEnabled();
 });
